@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Create Blog</title>
+    <style>
+.create-blog {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: transparent;
+    text-align: center;
+}
+.create-blog h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: aliceblue;
+}
+.form-group {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+label {
+    font-size: large;
+    font-weight: 600;
+    color: rgb(241, 154, 22);
+    margin-bottom: 50px;
+}
+
+input[type="text"],
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    color: burlywood;
+    border: 1px solid gold;
+    background: transparent;
+    border-radius: 20px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: goldenrod;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: bold;
+    padding: 15px 40px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: rgb(56, 56, 241);
+    font-weight: bold;
+    letter-spacing: 0.3rem;
+    border: 2px double rgb(56, 56, 241);
+    box-shadow: 0 2px 5px rgb(228, 186, 80);
+}
+</style>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <section class="create-blog">
+            <h1>Create Your Blog</h1>
+            <form action="/create" method="post">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content:</label>
+                    <textarea id="content" name="content" rows="10" required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!-- views/partials/header.ejs -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<header>
+  <div class="navbar">
+    <div class="logo"><a href="#">Content Hub</a></div>
+    <ul class="links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/create">Create Your Blog</a></li>
+    </ul>
+    <a href="#" class="Signin_btn" onclick="openModal('signinModal')">Sign In</a>
+    <a href="#" class="Signup_btn" onclick="openModal('signupModal')">Sign Up</a>
+    <div class="toggle-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+  <div class="dropdown_menu ">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/create">Create Your Blog</a></li>
+    <li><a href="#" class="Signin_btn" onclick="openModal('signinModal')">Sign In</a></li>
+    <li><a href="#" class="Signup_btn" onclick="openModal('signupModal')">Sign Up</a></li>
+  </div>
+</header>
+
+<!-- Sign In Modal -->
+<div id="signinModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('signinModal')">&times;</span>
+    <h2>Sign In</h2>
+    <form id="signinForm">
+      <label for="signin-email">Email:</label>
+      <input type="email" id="signin-email" name="email" required>
+      <label for="signin-password">Password:</label>
+      <input type="password" id="signin-password" name="password" required>
+      <button type="submit">Sign In</button>
+    </form>
+    <p id="signinMessage"></p>
+  </div>
+</div>
+
+<!-- Sign Up Modal -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('signupModal')">&times;</span>
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <label for="signup-name">Name:</label>
+      <input type="text" id="signup-name" name="name" required>
+      <label for="signup-email">Email:</label>
+      <input type="email" id="signup-email" name="email" required>
+      <label for="signup-password">Password:</label>
+      <input type="password" id="signup-password" name="password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p id="signupMessage"></p>
+  </div>
+</div>
+
+
+<script>
+  const toggleBtn = document.querySelector('.toggle-btn');
+  const toggleBtnIcon = document.querySelector('.toggle-btn i');
+  const dropDownMenu = document.querySelector('.dropdown_menu');
+  toggleBtn.onclick = function(){
+    dropDownMenu.classList.toggle('open');
+    const isOpen = dropDownMenu.classList.contains('open');
+    toggleBtnIcon.classList = isOpen
+    ? 'fa-solid fa-xmark'
+    : 'fa-solid fa-bars'
+  }
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+  }
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    document.getElementById("signinMessage").innerText = "";
+    document.getElementById("signupMessage").innerText = "";
+  }
+  
+  document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const name = document.getElementById("signup-name").value;
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+    fetch("/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("signupMessage").innerText = data.message;
+      if (data.success) {
+        setTimeout(() => closeModal("signupModal"), 2000);
+      }
+    });
+  });
+  
+  document.getElementById("signinForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const email = document.getElementById("signin-email").value;
+    const password = document.getElementById("signin-password").value;
+    fetch("/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("signinMessage").innerText = data.message;
+      if (data.success) {
+        setTimeout(() => closeModal("signinModal"), 2000);
+      }
+    });
+  });
+</script>

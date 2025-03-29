@@ -1,0 +1,371 @@
+/* public/css/style.css */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  height: 100vh;
+  background-color: rgb(2, 2, 53);
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: rgb(245, 206, 156);
+  font-size: 1rem;
+}
+a:hover{
+  color: orange;
+}
+header{
+  position: relative;
+  padding: 1rem 2rem;
+}
+.navbar{
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a{
+  font-size: 2rem;
+  font-weight: bold;
+}
+.navbar .links{
+  display: flex;
+  font-weight: bold;
+  gap: 2.5rem;
+}
+.navbar .toggle-btn{
+  color:#fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+.Signin_btn{
+  background-color: orange;
+  color: #fff;
+  padding: 0.8rem 3rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale .2 ease;
+}
+.Signup_btn{
+  background-color: orange;
+  color: #fff;
+  padding: 0.8rem 3rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale .2s ease;
+}
+.Signin_btn:hover{
+  scale: 1.05;
+  color: #fff;
+}
+.Signup_btn:hover{
+  scale: 1.05;
+  color: #fff;
+}
+.Signin_btn:active{
+  scale: 0.95;
+}
+.Signup_btn:active{
+  scale: 0.95;
+}
+/*dropdown*/
+.dropdown_menu{
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgb(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+}
+.dropdown_menu.open{
+  height: 240px;
+}
+.dropdown_menu li{
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown_menu .Signin_btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.dropdown_menu .Signup_btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsiveness*/
+@media(max-width: 992px){
+  .navbar .links,
+  .navbar .Signin_btn,
+  .navbar .Signup_btn{
+    display: none;
+  }
+  .navbar .toggle-btn{
+    display: block;
+  }
+  .dropdown_menu{
+    display: block;
+  }
+}
+@media(max-width: 576px){
+  .dropdown_menu{
+    left: 2rem;
+    width: unset;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: transparent;
+  backdrop-filter: blur(30px);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid gold;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 25px;
+}
+.modal-content h2{
+  text-align: center;
+  font-weight: 500;
+  color: gold;
+  margin-bottom: 20px;
+  text-decoration: double underline gold 1px;
+}
+.close {
+  color: rgb(219, 202, 102);
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: goldenrod;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: goldenrod;
+}
+
+.modal-content form input {
+  color: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid goldenrod;
+  border-radius: 15px;
+}
+
+.modal-content p{
+  color: goldenrod;
+}
+
+.modal-content form button {
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content form button:hover {
+  background-color: darkorange;
+  letter-spacing: 0.2rem;
+}
+/* Intro section styles */
+.intro {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: transparent;
+}
+
+.intro h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.intro p {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: rgb(172, 235, 164);
+  max-width: 800px;
+  margin: 0 auto; 
+  line-height: 1.6;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .intro h1 {
+      font-size: 2.5rem;
+  }
+
+  .intro p {
+      font-size: 1rem;
+      padding: 0 1rem; 
+  }
+}
+
+@media (max-width: 576px) {
+  .intro h1 {
+      font-size: 2rem;
+  }
+
+  .intro p {
+      font-size: 0.875rem;
+  }
+}
+/* Blog list styles */
+.blog-list {
+  margin: 1rem 0;
+  padding: 0 2rem;
+}
+
+.blog-list h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: rgb(241, 154, 22);
+}
+
+.blog-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.blog-post {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 350px;
+  box-shadow: 0 5px 7px rgb(228, 186, 80);
+  transition: transform 0.2s ease;
+}
+
+.blog-post:hover {
+  transform: translateY(-10px);
+}
+
+.blog-post h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: aliceblue;
+}
+
+.blog-post p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgb(245, 209, 132);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.blog-post a {
+  color: orange;
+  font-weight: bold;
+  text-align: right;
+  display: block;
+  text-overflow: ellipsis;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .blog-posts {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+.edit-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.edit-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.edit-form input[type="text"], .edit-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.edit-form button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.edit-form button:hover {
+  background-color: darkorange;
+}

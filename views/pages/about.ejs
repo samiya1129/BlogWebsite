@@ -1,0 +1,192 @@
+<!-- views/pages/about.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>About Content Hub</title>
+    <style>
+        /* Styles for the About page */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background:transparent;
+        }
+        .about-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: burlywood;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+        }
+        .about-content{
+            color: rgb(193, 243, 152);
+        }
+        .about-content, .about-section {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+        }
+        .about-section h2 {
+            font-size: 2.2rem;
+            color: burlywood;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+        }
+        .about-section ul {
+            list-style-type: none;
+            padding: 0;
+            color: aliceblue;
+            font-style: italic;
+        }
+        .about-section li {
+            background: transparent;
+            border: 2px solid goldenrod;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Styles for testimonials */
+        .testimonials {
+            text-align: center;
+            color: aliceblue;
+        }
+        .testimonial {
+            background: transparent;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            font-style: italic;
+        }
+        .testimonial-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .testimonial-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid goldenrod;
+            object-fit: cover;
+        }
+        .testimonial-text {
+            flex: 1;
+            text-align: left;
+            color: rgb(238, 99, 99);
+        }
+        .testimonial .name{
+            color: goldenrod;
+        }
+        .testimonial p:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        .testimonial p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <div class="about-container">
+            <h1 class="about-title">About Content Hub</h1>
+            <div class="about-content">
+                <p>Welcome to <strong>Content Hub</strong>, your go-to platform for creating, sharing, and discovering amazing blogs. At Content Hub, we believe in the power of words and the impact they can have on the world. Our platform is designed to provide a seamless and enjoyable experience for both writers and readers.</p>
+                <p>Whether you're a seasoned blogger or just starting out, Content Hub offers the tools and support you need to share your voice with the world. Our user-friendly interface makes it easy to create stunning blogs with rich content, including text, images, and more.</p>
+                <p>At Content Hub, we value creativity, community, and authenticity. We strive to foster a supportive environment where bloggers can connect, collaborate, and grow. Explore a wide range of topics, discover new perspectives, and stay informed with the latest posts from our talented community of writers.</p>
+                <p>Creating a blog on Content Hub is simple. Just click on "Create Your Blog" in the navigation menu, fill in the title and content, and hit submit. Your blog will be live and ready for the world to see!</p>
+                <p>Thank you for being a part of Content Hub. We’re excited to see what you create and share with our community.</p>
+            </div>
+            <div class="about-section">
+                <h2>Is Blog Useful?</h2>
+                <ul>
+                    <li>Blogs provide valuable information and insights on a wide range of topics.</li>
+                    <li>They help build a community of like-minded individuals.</li>
+                    <li>Blogs can enhance your writing and communication skills.</li>
+                    <li>They serve as a platform to share your expertise and knowledge.</li>
+                    <li>Blogs can be a source of income through monetization options.</li>
+                </ul>
+            </div>
+            <div class="about-section">
+                <h2>How Blogs Are Written?</h2>
+                <ul>
+                    <li>Start with a clear and engaging title.</li>
+                    <li>Plan your content with an outline.</li>
+                    <li>Write in a conversational and relatable tone.</li>
+                    <li>Use images and media to enhance your content.</li>
+                    <li>Edit and proofread before publishing.</li>
+                    <li>Engage with your readers through comments and feedback.</li>
+                </ul>
+            </div>
+            <div class="about-section">
+                <h2>What Our Users Say</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_0.jpg" alt="Alice Johnson" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"Content Hub has completely transformed my blogging experience. The platform is easy to use and the community is incredibly supportive."</p>
+                                <p class="name">- Alice Johnson</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.V-iUPXL7-oSOAvR2dtdWiQHaHa&pid=Api&P=0&h=180" alt="Mark Wilson" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"I love how Content Hub makes it easy to create and share my blogs. The feedback I receive from readers helps me improve my writing."</p>
+                                <p class="name">- Mark Wilson</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.P6aOnV9MYWBKM_mnK6KtYAAAAA&pid=Api&P=0&h=180" alt="Jane Smith" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"The interface is user-friendly and the tools provided are top-notch. I’ve seen a significant increase in my blog’s reach since joining Content Hub."</p>
+                                <p class="name">- Jane Smith</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.2i5UaEHaQM3PYAYXQyM1AAAAAA&pid=Api&P=0&h=180" alt="John Doe" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"Content Hub offers a great way to connect with other bloggers. The community here is wonderful and always willing to help."</p>
+                                <p class="name">- John Doe</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://m.media-amazon.com/images/M/MV5BOTJjNzIwZTMtN2Y5OC00M2I3LTg5MDAtNjFiZmJmNGJhNjRiXkEyXkFqcGdeQXVyMjQ1MjEwNjI@._V1_FMjpg_UX1000_.jpg" alt="Emily Clark" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"I appreciate the support and features offered by Content Hub. It’s the perfect platform for both new and experienced bloggers."</p>
+                                <p class="name">- Richard Sharrah</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <img src="https://tse4.mm.bing.net/th?id=OIP.d7mM-baDdCa6BOkxDwQdDwHaH6&pid=Api&P=0&h=180" alt="Michael Brown" class="testimonial-image">
+                            <div class="testimonial-text">
+                                <p>"Since joining Content Hub, my blog has grown significantly. The tools and resources provided have been incredibly helpful."</p>
+                                <p class="name">- Michael Brown</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            </div> 
+        </div>
+    </main>
+</body>
+</html>

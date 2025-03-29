@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title><%= post.title %></title>
+    <style>
+        /* CSS styles for post layout */
+        .post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 10px;
+        }
+        .post-title {
+            text-align: center;
+            font-size: 3rem;
+            color: azure;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .post-content {
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: burlywood;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+        .post-actions button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            cursor: pointer;
+            background-color: rgb(238, 186, 91);
+        }
+        .like-dislike-icons {
+            font-size: 1.8rem;
+            color: wheat;
+        }
+        .stars {
+            font-size: 1.8rem;
+            color: wheat;
+        }
+        .active {
+            color: gold; /* Change color when active */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <div class="post-container">
+            <h1 class="post-title"><%= post.title %></h1>
+            <div class="post-content">
+                <%= post.content %>
+            </div>
+            <div class="post-actions">
+                <form action="/edit/<%= post.id %>" method="get">
+                    <button type="submit">Edit</button>
+                </form>
+                <form action="/delete/<%= post.id %>" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+                <div class="like-dislike-icons">
+                    <i class="fa fa-thumbs-up like-btn"></i>
+                    <i class="fa fa-thumbs-down dislike-btn"></i>
+                </div>
+                <div class="stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const postId = '<%= post.id %>'; // Unique identifier for the post
+        const likeButton = document.querySelector('.fa-thumbs-up');
+        const dislikeButton = document.querySelector('.fa-thumbs-down');
+        const stars = document.querySelectorAll('.fa-star');
+
+        // Function to save state to local storage
+        function saveState() {
+            const state = {
+                liked: likeButton.classList.contains('active'),
+                disliked: dislikeButton.classList.contains('active'),
+                rating: Array.from(stars).filter(star => star.classList.contains('active')).length
+            };
+            localStorage.setItem(`post-${postId}-state`, JSON.stringify(state));
+        }
+
+        // Function to load state from local storage
+        function loadState() {
+            const state = JSON.parse(localStorage.getItem(`post-${postId}-state`));
+            if (state) {
+                if (state.liked) likeButton.classList.add('active');
+                if (state.disliked) dislikeButton.classList.add('active');
+                stars.forEach((star, index) => {
+                    star.classList.toggle('active', index < state.rating);
+                });
+            }
+        }
+
+        // Load state on page load
+        loadState();
+
+        // Like button click event
+        likeButton.addEventListener('click', () => {
+            if (dislikeButton.classList.contains('active')) {
+                dislikeButton.classList.remove('active');
+            }
+            likeButton.classList.toggle('active');
+            saveState();
+        });
+
+        // Dislike button click event
+        dislikeButton.addEventListener('click', () => {
+            if (likeButton.classList.contains('active')) {
+                likeButton.classList.remove('active');
+            }
+            dislikeButton.classList.toggle('active');
+            saveState();
+        });
+
+        // Star rating click event
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('active', i <= index);
+                });
+                saveState();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Content Hub</title>
+</head>
+<body>
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <section class="intro">
+            <h1>Welcome to the Content Hub</h1>
+            <p>"Explore a world of ideas and inspiration on our vibrant blog platform. Discover insightful articles, engaging stories, and expert opinions on our blog. Stay informed, entertained, and inspired with our diverse range of blog topics. Join our community of writers and readers, and share your voice on our blog."</p>
+        </section>
+        <section class="blog-list">
+            <h2>Latest Posts</h2>
+            <div class="blog-posts">
+                <% posts.forEach(post => { %>
+                    <div class="blog-post">
+                        <h3><%= post.title %></h3>
+                        <p><%= post.content.substring(0, 100) %>...</p>
+                        <a href="/post/<%= post.id %>">Read More</a>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
